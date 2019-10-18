@@ -21,7 +21,8 @@ public class MyLinkedList{
 	}
 }
 
-class Node {								//Creates a Node for a linked list, with getter and setter methods
+//Creates a Node for a linked list, with getter and setter methods
+class Node {								
 	int data;
 	Node next;
 	int index;
@@ -95,26 +96,34 @@ class MyLInkedList{
 	
 	public void deleteByValue(int value){
 		Node current = head;
-		ArrayList<Integer> targetNodeIndices = new ArrayList<Integer>();	//Creates an arraylist with the indices of nodes with the target value
-		while (current != null){											//While loop that adds nodes with target value to the arraylist
+		//Creates an arraylist with the indices of nodes with the target value
+		ArrayList<Integer> targetNodeIndices = new ArrayList<Integer>();	
+		//While loop that adds nodes with target value to the arraylist
+		while (current != null){											
 			if (current.getData() == value)
 				targetNodeIndices.add(current.getIndex());
 			current = current.getNext();
 		}
-		for (int i = 0; i < targetNodeIndices.size(); i++){					//For loop that deletes each node with target value
+		//For loop that deletes each node with target value
+		for (int i = 0; i < targetNodeIndices.size(); i++){					
 			current = head;
-			if (targetNodeIndices.get(i) == 0)								//Specific for deleting first node
+			//Specific for deleting first node
+			if (targetNodeIndices.get(i) == 0)								
 				head = current.getNext();
 			else{
-				while (current.getIndex() != targetNodeIndices.get(i) - 1){ //Makes current the node before the node next to be deleted
+				//Makes current the node before the node next to be deleted
+				while (current.getIndex() != targetNodeIndices.get(i) - 1){ 
 					current = current.getNext();
 				}
 				Node temp = current;
-				current = current.getNext();								//Current is now node to be deleted
-				if (current.getNext() == null){								//Specific for deleting last node
+				//Current is now node to be deleted
+				current = current.getNext();
+				//Specific for deleting last node
+				if (current.getNext() == null){								
 					temp.setNext(null);
 				}
-				else{														//Makes preceding node link to seceding node
+				//Makes preceding node link to seceding node
+				else{														
 					current = current.getNext();
 					temp.setNext(current);
 				}
@@ -124,11 +133,13 @@ class MyLInkedList{
 	
 	public void deleteByIndex(int index){
 		Node current = head;
-		if (index == 0){													//Specific for deleting first node
+		if (index == 0){	
+			//Specific for deleting first node
 			head = current.getNext();
 		}
 		else{
-			while (current.getIndex() != index - 1) {						//Same deleting code except with specific index
+			//Same deleting code except with specific index
+			while (current.getIndex() != index - 1) {						
 				current = current.getNext();
 			}
 			Node temp = current;
